@@ -22,10 +22,10 @@
 
 
 
-#import modułu csv, pozwalającego na zapis plików w formacie csv
-import csv
-
-# dane pracowników
+# #import modułu csv, pozwalającego na zapis plików w formacie csv
+# import csv
+#
+# # dane pracowników
 dane = [
     ["imie", "wiek", "dział", "czas_pracy"],
     ["Anna", 29, "FR", 3.5],
@@ -37,9 +37,17 @@ dane = [
     ["Magdalena", 38, "FR", 10],
     ["Robert", 50, "FK", 20]
 ]
+#
+# # zapis (mode="w") do pliku za pomocą kontekst menedżera with z kodowaniem polskich znaków
+# with open("pracownicy.csv", mode="w", newline="", encoding="utf-8") as plik:
+#     writer = csv.writer(plik)
+#     writer.writerows(dane)
 
-# zapis (mode="w") do pliku za pomocą kontekst menedżera with z kodowaniem polskich znaków
-with open("pracownicy.csv", mode="w", newline="", encoding="utf-8") as plik:
-    writer = csv.writer(plik)
-    writer.writerows(dane)
+import json
 
+with open("pracownicy.json", "w", newline="", encoding="utf-8") as plik:
+	json.dump(dane, plik)
+
+# json_str = json.dumps(dane)
+#
+# print(json_str)
